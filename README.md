@@ -1,2 +1,2 @@
-# pr-ctica2arduino
-Práctica Saídas Dixitais (2)
+Prácticas de Informática Industrial (Arduino)
+
