@@ -71,7 +71,16 @@ void verificarPulsador() {
       }
       
       Serial.println("Reiniciouse o programa");
-      delay (500); /* Delay necesario porque senón salta ao mismo tempo que á mensaxe de selección de cor */
+      Serial.flush(); // Para evitar que se rompa a mensaxe tras resetear. 
+
+      digitalWrite(5, LOW);
+      digitalWrite(3, LOW);
+      digitalWrite(10, LOW); // Había algún dos LED que se quedaba "enganchado" tras o reseteo. Isto asegura que se apaguen todos correctamente.
+      digitalWrite(11, LOW);
+      digitalWrite(6, LOW);
+      digitalWrite(9, LOW);
+
+      delay (500); // Delay necesario porque senón salta ao mismo tempo que á mensaxe de selección de cor 
       resetFunc();
     }
   }
@@ -128,12 +137,11 @@ void loop(){
   switch (pin) {
     case 5: 
     case 3:
-      if(pin != -99){
+      
         digitalWrite(pin, HIGH); //Actuación en pin dixital con apagado e acendido.
         esperar(Tempo);
         digitalWrite(pin, LOW);
         esperar(Tempo);
-      }
     break; 
     
     case 10:
